@@ -50,6 +50,8 @@ function submitWork() {
     else {
         document.getElementById('not-match').style = 'display: block';
         tryLeftHandler();
+        clearButton();
+        document.getElementById('generator-input').value = null;
     }
 }
 
