@@ -37,13 +37,13 @@
                               <div class="button" onclick="numberInput(this)">3</div>
                             </div>
                             <div class="calc-button-row">
-                                <div class="button" >&lt;</div>
+                                <div class="button" onclick="clearLastOne()">&lt;</div>
                                 <div class="button" onclick="numberInput(this)">0</div>
                                 <div class="button" onclick="clearButton()">C</div>
                             </div>
                             <div>
                                 <button type="submit" class="submit-btn" onclick="submit()">Submit</button>
-                                <p class="action-left">3 try left</p>
+                                <p class="action-left"><span id="try-left">3</span> try left</p>
                             </div>
                     </div>
                 </div>

@@ -4,35 +4,58 @@ function numberInput(id) {
         const element = stringNumber[i];
         const value = document.getElementById('generator-output').value;
         const newValue = value + element + '';
-        console.log(newValue)
         document.getElementById('generator-output').value = newValue;
     }
 }
 
-function submit(){
-    const generatorInput = document.getElementById('generator-input').value;
-    const generatorOutput = document.getElementById('generator-output').value;
-    if(generatorInput == generatorOutput){
-        document.getElementById('match').style = 'display: block';
-    }
-    else{
-        document.getElementById('not-match').style = 'display: block';
-    }
+function clearLastOne() {
+    let element = document.getElementById('generator-output').value;
+    let newElement = element.slice(0, element.length - 1)
+    document.getElementById('generator-output').value = newElement;
 }
 
-function clearButton(){
+function clearButton() {
     document.getElementById('generator-output').value = null;
 }
 
-function setGenerateInput() {
-    const generateInput = (Math.random()*10000+'').split(',')[0];
-    const generateInputNumber = parseInt(generateInput)
-    const toFixed = generateInputNumber.toFixed(0);
-    if(toFixed.length == 4) {
-        document.getElementById('generator-input').value = toFixed;
+function submit() {
+    const generatorInput = document.getElementById('generator-input').value;
+    const generatorOutput = document.getElementById('generator-output').value;
+    displayNoneBlock();
+    if (generatorInput == generatorOutput && generatorInput.length == 4) {
+        document.getElementById('match').style = 'display: block';
     }
-    console.log(toFixed);
+    else {
+        document.getElementById('not-match').style = 'display: block';
+        tryLeftHandler();
+    }
+    clearButton()
+    document.getElementById('generator-input').value = null;
 }
 
+function tryLeftHandler(){
+    const tryLeftInput = document.getElementById('try-left').innerText;
+    const tryLeftInputNumber = parseInt(tryLeftInput);
+    const newValue = tryLeftInputNumber - 1;
+    document.getElementById('try-left').innerText = newValue;
+    return newValue;
+}
+
+
+function setGenerateInput() {
+    const generateInput = (Math.random() * 10000 + '').split(',')[0];
+    const generateInputNumber = parseInt(generateInput)
+    const toFixed = generateInputNumber.toFixed(0);
+    if (toFixed.length == 4) {
+        document.getElementById('generator-input').value = toFixed;
+    }
+    clearButton();
+    displayNoneBlock();
+}
+
+function displayNoneBlock() {
+    document.getElementById('match').style = 'display: none';
+    document.getElementById('not-match').style = 'display: none';
+}
 
 
