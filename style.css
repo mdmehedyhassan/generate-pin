@@ -64,7 +64,7 @@ width: 100%;
 
 .button {
 width: 20%;
-background: #425062;
+background: #3b4657;
 color: #fff;
 padding: 20px 0;
 margin: 5px;
@@ -75,6 +75,11 @@ vertical-align: middle;
 margin-right: -4px;
 border-radius: 10px;
 cursor: pointer;
+}
+.button:hover{
+    background: #68819d;
+    color: rgb(229, 255, 236);
+    box-shadow: 3px 3px 6px rgb(52, 52, 11);
 }
 .blink-me {
 color: #E0B612;

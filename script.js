@@ -27,25 +27,30 @@ function submit() {
     if (tryLeftNumber >= 1) {
         submitWork();
     }
-    else {
-        console.log('sorry')
-    }
 }
 
 function submitWork() {
     const generatorInput = document.getElementById('generator-input').value;
     const generatorOutput = document.getElementById('generator-output').value;
     displayNoneBlock();
-    if (generatorInput == generatorOutput && generatorInput.length == 4) {
+    if(generatorInput.length != 4 ){
+        displayNoneBlock();
+        document.getElementById('enter-generate-input').style = 'display:block';
+    }
+    else if(generatorOutput.length < 4){
+        displayNoneBlock();
+        document.getElementById('enter-generate-output').style = 'display:block';
+    }
+    else if (generatorInput == generatorOutput) {
         document.getElementById('match').style = 'display: block';
         document.getElementById('try-left').innerText = 3;
+        clearButton();
+        document.getElementById('generator-input').value = null;
     }
     else {
         document.getElementById('not-match').style = 'display: block';
         tryLeftHandler();
     }
-    clearButton()
-    document.getElementById('generator-input').value = null;
 }
 
 function tryLeftHandler() {
@@ -87,6 +92,6 @@ function setGenerateInput() {
 function displayNoneBlock() {
     document.getElementById('match').style = 'display: none';
     document.getElementById('not-match').style = 'display: none';
+    document.getElementById('enter-generate-input').style = 'display: none';
+    document.getElementById('enter-generate-output').style = 'display: none';
 }
-
-
